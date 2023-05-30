@@ -59,8 +59,8 @@ function asAmirror(frase) {
    // Tu código:
    let espejo = frase.split('').reverse().join('');
    return espejo.split(' ').reverse().join(' ');
- 
-  
+
+
    // let espejo = '';
 
    // for (let i = 0; i < frase.length; i++) {
@@ -76,13 +76,22 @@ function capicua(numero) {
    // Si el número que recibes es capicúa debes retornar el string: "Es capicua".
    // Caso contrario: "No es capicua".
    // Tu código:
-   let capicúa = 
+   let num = numero.toString().split("").reverse().join("");
+   if (num == numero) return "Es capicua";
+   return "No es capicua";
 }
 
 function deleteAbc(string) {
    // Tu tarea es eliminar las letras "a", "b" y "c" del string recibido.
    // Retorna el string sin estas letras.
    // Tu código:
+   let nuevostringarreglo = [];
+   for (let i = 0; i < string.length; i++) {
+      if (string[i] !== "a" && string[i] !== "b" && string[i] !== "c")
+         nuevostringarreglo.push(string[i])
+   }
+   let nuevostring = nuevostringarreglo.join("");
+   return nuevostring;
 }
 
 function sortArray(arrayOfStrings) {
@@ -91,6 +100,19 @@ function sortArray(arrayOfStrings) {
    // de la longitud de cada string.
    // [EJEMPLO]: ["You", "are", "beautiful", "looking"]  ---> [“You", "are", "looking", "beautiful"]
    // Tu código:
+   let largodeArray = arrayOfStrings.length - 1;
+   let aux = arrayOfStrings;
+
+   for (let i = 0; i < largodeArray; i++) {
+      for (let j = 0; j < largodeArray - i; j++) {
+         if (aux[j].length > aux[j + 1].length) {
+            let temp = aux[j];
+            aux[j] = aux[j + 1];
+            aux[j + 1] = temp;
+         }
+      }
+   }
+   return aux;
 }
 
 function buscoInterseccion(array1, array2) {
@@ -100,6 +122,14 @@ function buscoInterseccion(array1, array2) {
    // Si no tienen elementos en común, retornar un arreglo vacío.
    // [PISTA]: los arreglos no necesariamente tienen la misma longitud.
    // Tu código:
+   let numero = [];
+   for (let i = 0; i < array1.length; i++) {
+      for (let j = 0; j < array2.length; j++) {
+         if (array1[i] === array2[j])
+            numero.push(array1[i])
+      }
+   }
+   return numero;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
